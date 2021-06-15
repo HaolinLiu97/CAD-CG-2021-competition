@@ -1,19 +1,19 @@
 {
-  "scene_id": "9ba61fbc-ec92-4421-932b-68f5adb9b08e",
-  "img_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6249716_9ba61fbc-ec92-4421-932b-68f5adb9b08e_3dfront-dataset-batch-split-10k-0-cam-3322_2_13931356_1621595041759/64b36d26-6e60-4957-a11f-40792bbc422c.jpg",
-  "depth_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6249716_9ba61fbc-ec92-4421-932b-68f5adb9b08e_3dfront-dataset-batch-split-10k-0-cam-3322_2_13931356_1621595041759/z_depth.png",
-  "normal_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6249716_9ba61fbc-ec92-4421-932b-68f5adb9b08e_3dfront-dataset-batch-split-10k-0-cam-3322_2_13931356_1621595041759/normal.png",
+  "scene_id": "739ce449-ad29-4a8c-870a-ef7be4a5858b",
+  "img_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6246396_739ce449-ad29-4a8c-870a-ef7be4a5858b_3dfront-dataset-batch-split-10k-0-cam-2_2_13928036_1621566137118/c1df1157-aba7-4446-8580-3d69860f1f35.jpg",
+  "depth_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6246396_739ce449-ad29-4a8c-870a-ef7be4a5858b_3dfront-dataset-batch-split-10k-0-cam-2_2_13928036_1621566137118/z_depth.png",
+  "normal_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6246396_739ce449-ad29-4a8c-870a-ef7be4a5858b_3dfront-dataset-batch-split-10k-0-cam-2_2_13928036_1621566137118/normal.png",
   "bbox_infos": {
     "camera": {
       "K": [
         [
-          460.8000000000002,
+          443.8864453985854,
           0.0,
           -256.0
         ],
         [
           0.0,
-          460.8000000000002,
+          443.8864453985854,
           -256.0
         ],
         [
@@ -23,67 +23,38 @@
         ]
       ],
       "pos": [
-        -3.3383802638221765,
-        -0.8658202048369787,
-        3.4154326456125745
+        1.2142966860465225,
+        -0.9846236456448325,
+        1.5370161338801318
       ],
       "rot": [
-        0.0,
-        0.8760429637741053,
-        0.0,
-        -0.48223306151889006
+        -0.10025656745796604,
+        -0.4752662479622987,
+        0.05461758587816159,
+        0.8724033089931668
       ]
     },
     "object_infos": [
       {
-        "id": "furniture/424",
-        "label": "cabinet",
+        "id": "furniture/108",
+        "label": "sofa",
         "bbox": {
           "center": [
-            -0.7789336652566015,
-            1.0246,
-            -2.549871938506002
+            -0.5336953981864067,
+            0.39549999999999996,
+            3.13065246833789
           ],
           "size": [
-            2.0841,
-            2.0492,
-            0.6371
+            2.2468,
+            0.7909999999999999,
+            0.7624
           ]
         },
         "6dpose": {
           "pos": [
-            -0.7789336652566015,
+            -0.5336953981864067,
             0.0,
-            -2.549871938506002
-          ],
-          "rot": [
-            0,
-            -0.70711,
-            0,
-            0.70711
-          ]
-        }
-      },
-      {
-        "id": "furniture/433",
-        "label": "cabinet",
-        "bbox": {
-          "center": [
-            -2.7627,
-            0.26925,
-            -1.0678783347235787
-          ],
-          "size": [
-            1.9334,
-            0.5385,
-            0.5288
-          ]
-        },
-        "6dpose": {
-          "pos": [
-            -2.7627,
-            0.0,
-            -1.0678783347235787
+            3.13065246833789
           ],
           "rot": [
             0,
@@ -94,31 +65,89 @@
         }
       },
       {
-        "id": "furniture/439",
-        "label": "bed",
+        "id": "furniture/109",
+        "label": "chair",
         "bbox": {
           "center": [
-            -2.75181664425811,
-            0.3947,
-            -2.5777169212883178
+            1.1726710728928293,
+            0.4596,
+            0.9254232517329901
           ],
           "size": [
-            2.0177,
-            0.7894,
-            2.1675999999999997
+            0.8997,
+            0.9192,
+            0.8225
           ]
         },
         "6dpose": {
           "pos": [
-            -2.75181664425811,
+            1.1726710728928293,
             0.0,
-            -2.5777169212883178
+            0.9254232517329901
+          ],
+          "rot": [
+            0,
+            -0.38268,
+            0,
+            0.92388
+          ]
+        }
+      },
+      {
+        "id": "furniture/110",
+        "label": "chair",
+        "bbox": {
+          "center": [
+            1.4301723362770267,
+            0.4596,
+            2.367406645647285
+          ],
+          "size": [
+            0.8997,
+            0.9192,
+            0.8225
+          ]
+        },
+        "6dpose": {
+          "pos": [
+            1.4301723362770267,
+            0.0,
+            2.367406645647285
           ],
           "rot": [
             0,
             -0.70711,
             0,
             0.70711
+          ]
+        }
+      },
+      {
+        "id": "furniture/112",
+        "label": "table",
+        "bbox": {
+          "center": [
+            -0.8022410672818422,
+            0.14555,
+            1.9026349845086792
+          ],
+          "size": [
+            1.1838,
+            0.2911,
+            0.4686
+          ]
+        },
+        "6dpose": {
+          "pos": [
+            -0.8022410672818422,
+            0.0,
+            1.9026349845086792
+          ],
+          "rot": [
+            0,
+            0,
+            0,
+            1
           ]
         }
       }
