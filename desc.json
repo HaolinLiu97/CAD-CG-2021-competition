@@ -1,0 +1,127 @@
+{
+  "scene_id": "9ba61fbc-ec92-4421-932b-68f5adb9b08e",
+  "img_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6249716_9ba61fbc-ec92-4421-932b-68f5adb9b08e_3dfront-dataset-batch-split-10k-0-cam-3322_2_13931356_1621595041759/64b36d26-6e60-4957-a11f-40792bbc422c.jpg",
+  "depth_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6249716_9ba61fbc-ec92-4421-932b-68f5adb9b08e_3dfront-dataset-batch-split-10k-0-cam-3322_2_13931356_1621595041759/z_depth.png",
+  "normal_id": "https://ossgw.alicdn.com/jia-render/floorplan/render/images/2021-05-21/DesignAdmin_6249716_9ba61fbc-ec92-4421-932b-68f5adb9b08e_3dfront-dataset-batch-split-10k-0-cam-3322_2_13931356_1621595041759/normal.png",
+  "bbox_infos": {
+    "camera": {
+      "K": [
+        [
+          460.8000000000002,
+          0.0,
+          -256.0
+        ],
+        [
+          0.0,
+          460.8000000000002,
+          -256.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0
+        ]
+      ],
+      "pos": [
+        -3.3383802638221765,
+        -0.8658202048369787,
+        3.4154326456125745
+      ],
+      "rot": [
+        0.0,
+        0.8760429637741053,
+        0.0,
+        -0.48223306151889006
+      ]
+    },
+    "object_infos": [
+      {
+        "id": "furniture/424",
+        "label": "cabinet",
+        "bbox": {
+          "center": [
+            -0.7789336652566015,
+            1.0246,
+            -2.549871938506002
+          ],
+          "size": [
+            2.0841,
+            2.0492,
+            0.6371
+          ]
+        },
+        "6dpose": {
+          "pos": [
+            -0.7789336652566015,
+            0.0,
+            -2.549871938506002
+          ],
+          "rot": [
+            0,
+            -0.70711,
+            0,
+            0.70711
+          ]
+        }
+      },
+      {
+        "id": "furniture/433",
+        "label": "cabinet",
+        "bbox": {
+          "center": [
+            -2.7627,
+            0.26925,
+            -1.0678783347235787
+          ],
+          "size": [
+            1.9334,
+            0.5385,
+            0.5288
+          ]
+        },
+        "6dpose": {
+          "pos": [
+            -2.7627,
+            0.0,
+            -1.0678783347235787
+          ],
+          "rot": [
+            0,
+            1,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "id": "furniture/439",
+        "label": "bed",
+        "bbox": {
+          "center": [
+            -2.75181664425811,
+            0.3947,
+            -2.5777169212883178
+          ],
+          "size": [
+            2.0177,
+            0.7894,
+            2.1675999999999997
+          ]
+        },
+        "6dpose": {
+          "pos": [
+            -2.75181664425811,
+            0.0,
+            -2.5777169212883178
+          ],
+          "rot": [
+            0,
+            -0.70711,
+            0,
+            0.70711
+          ]
+        }
+      }
+    ]
+  }
+}
