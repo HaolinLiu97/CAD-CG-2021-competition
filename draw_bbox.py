@@ -158,7 +158,7 @@ def get_bbox(center_pred,size_pred,rot_matrix,color=[1,0,0]):
 
 color=cv2.imread("color.jpg",cv2.IMREAD_ANYDEPTH|cv2.IMREAD_ANYCOLOR)
 depth=cv2.imread("depth.png",cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
-depth=depth[:,:,0]
+#depth=depth[:,:,0]
 depth=depth/255.0
 depth=(1-depth)*10
 with open('desc.json','r') as f:
@@ -172,7 +172,7 @@ wrd2cam_matrix=quaternion_rotation_matrix(Q,translation)
 cam2wrd_matrix=np.linalg.inv(wrd2cam_matrix)
 K=np.array(camera_K)
 object_infos=bbox_infos['object_infos']
-object=object_infos[3]
+object=object_infos[2]
 object_bbox=object["bbox"]
 bbox_center=object_bbox["center"]
 bbox_size=object_bbox["size"]
