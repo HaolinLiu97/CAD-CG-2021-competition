@@ -1,0 +1,10 @@
+{
+  "fileData":{
+    "evaluatorDir":"",
+    "evaluatorPath":"",
+    "standardFileDir":"",
+    "standardFilePath":"answer_test.json",
+    "userFileDir":"",
+    "userFilePath":"predict_result_test.json"
+  }
+}
