@@ -5,3 +5,8 @@ you can run the draw_bbox.py to visualize the 3d data of the dataset. Open3D is 
 
 ### number of class
 There are totally 9 class in the dataset.
+
+### How to convert depth image to distance to image plane
+```
+distance=(1-depth_value/255.0)*10
+```
