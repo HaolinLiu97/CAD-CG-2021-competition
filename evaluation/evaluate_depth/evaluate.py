@@ -27,19 +27,20 @@ def report_error_msg(detail, showMsg, out_p):
 def report_score(score, out_p):
     result = dict()
     result['success']=True
-    result['mmse'] = score
+    result['rmse'] = score
 
     # 这里{}里面的score注意保留，但可以增加其他key，比如这样：
     # result['scoreJson'] = {'score': score, 'aaaa': 0.1}
 
     dump_2_json(result,out_p)
 
-def compute_mmse(result_image,gt_image):
+def compute_rmse(result_image,gt_image):
     error=(result_image-gt_image)**2
-    mmse=np.mean(error)
-    return mmse
+    mse=np.mean(error)
+    rmse=np.sqrt(mse)
+    return rmse
 
-def evaluate_mmse(submit_path,standard_path):
+def evaluate_rmse(submit_path,standard_path):
     image_list=os.listdir(standard_path)
     total_mmse=0
     total_count=0
@@ -50,7 +51,7 @@ def evaluate_mmse(submit_path,standard_path):
         gt_image=(1-gt_image/255.0)*10
         result_path=os.path.join(submit_path,image_name,"depth.exr")
         result_image=cv2.imread(result_path,cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
-        mmse=compute_mmse(result_image,gt_image)
+        mmse=compute_rmse(result_image,gt_image)
         total_count+=1
         total_mmse+=mmse
     mean_mmse=total_mmse/total_count
@@ -74,5 +75,5 @@ if __name__=="__main__":
     # 选手提交的结果文件路径
     submit_path=input_params["fileData"]["userFileDir"]
 
-    mean_mmse=evaluate_mmse(submit_path,standard_path)
-    report_score(mean_mmse,out_path)
+    mean_rmse=evaluate_rmse(submit_path,standard_path)
+    report_score(mean_rmse,out_path)
