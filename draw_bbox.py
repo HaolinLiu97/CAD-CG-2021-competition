@@ -95,7 +95,7 @@ def quaternion2rot(Q):
                     [r02, r12, r22],])
     return rot
 
-def reconstruct_pcd(color,depth,depth_intrinsic,cam_pose):
+def reconstruct_pcd(color,depth,normal,depth_intrinsic,cam_pose):
     '''
     :param color: rgb image
     :param depth: depth image in meter unit
@@ -107,6 +107,7 @@ def reconstruct_pcd(color,depth,depth_intrinsic,cam_pose):
     unprojected_Y = valid_Y * depth[valid_Y, valid_X]
     unprojected_X = valid_X * depth[valid_Y, valid_X]
     unprojected_Z = depth[valid_Y, valid_X]
+    normal=normal[valid_Y,valid_X,:]
     point_cloud_xyz = np.concatenate(
         [unprojected_X[:, np.newaxis], unprojected_Y[:, np.newaxis], unprojected_Z[:, np.newaxis]], axis=1)
     intrinsic_inv = np.linalg.inv(depth_intrinsic)
@@ -126,7 +127,7 @@ def reconstruct_pcd(color,depth,depth_intrinsic,cam_pose):
 
     point_cloud_xyz = np.concatenate([point_cloud_xyz, np.ones([point_cloud_xyz.shape[0], 1])], axis=1)
     point_cloud_xyz = np.dot(cam_pose, point_cloud_xyz.T).T
-    point_cloud = np.concatenate([point_cloud_xyz[:, 0:3], point_cloud_colors / 255.0],axis=1)
+    point_cloud = np.concatenate([point_cloud_xyz[:, 0:3], point_cloud_colors / 255.0,normal],axis=1)
     return point_cloud
 
 def get_bbox(center_pred,size_pred,rot_matrix,color=[1,0,0]):
@@ -156,8 +157,25 @@ def get_bbox(center_pred,size_pred,rot_matrix,color=[1,0,0]):
     line_set.colors=o3d.utility.Vector3dVector(colors)
     return line_set
 
+def get_normal_line(normal_start,normal_end,color=[0,0,1]):
+    verts = np.concatenate([normal_start, normal_end], axis=0)
+    index1 = np.linspace(0, normal_start.shape[0] - 1, normal_start.shape[0]).astype(np.int)
+    index2 = np.linspace(normal_start.shape[0], normal_start.shape[0] * 2 - 1, normal_start.shape[0]).astype(np.int)
+    lines = np.concatenate([index1[:, np.newaxis], index2[:, np.newaxis]], axis=1)
+    line_set = o3d.geometry.LineSet(
+        points=o3d.utility.Vector3dVector(verts),
+        lines=o3d.utility.Vector2iVector(lines),
+    )
+    colors = [color for i in range(len(lines))]
+    line_set.colors = o3d.utility.Vector3dVector(colors)
+    return line_set
+
 color=cv2.imread("color.jpg",cv2.IMREAD_ANYDEPTH|cv2.IMREAD_ANYCOLOR)
 depth=cv2.imread("depth.png",cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
+normal=cv2.imread("normal.png",cv2.IMREAD_ANYDEPTH|cv2.IMREAD_ANYCOLOR)
+normal=normal[:,:,::-1]
+normal=normal.astype(np.float)
+normal=normal/(np.sqrt(normal[:,:,0]**2+normal[:,:,1]**2+normal[:,:,2]**2))[:,:,np.newaxis]
 #depth=depth[:,:,0]
 depth=depth/255.0
 depth=(1-depth)*10
@@ -192,10 +210,16 @@ cam_center=-np.dot(inverse_K,np.array([project_x*xy_depth,project_y*xy_depth,xy_
 recover_center=np.dot(cam2wrd_matrix,np.concatenate([cam_center,np.ones((1))],axis=0))
 '''
 
-point_cloud=reconstruct_pcd(color,depth,K,cam2wrd_matrix)
+point_cloud=reconstruct_pcd(color,depth,normal,K,cam2wrd_matrix)
 pcd=o3d.geometry.PointCloud()
 pcd.points=o3d.utility.Vector3dVector(point_cloud[:,0:3])
 pcd.colors=o3d.utility.Vector3dVector(point_cloud[:,3:6])
+
+rand_ind=np.random.randint(0,point_cloud.shape[0],500)
+normal_start=point_cloud[rand_ind,0:3]
+normal_end=0.2*point_cloud[rand_ind,6:9]+point_cloud[rand_ind,0:3]
+
+normal_line=get_normal_line(normal_start,normal_end)
 
 bbox_center=np.array(bbox_center)
 #bbox_center[1]-=1
@@ -205,6 +229,7 @@ vis=o3d.visualization.Visualizer()
 vis.create_window()
 vis.add_geometry(pcd)
 vis.add_geometry(bbox_line)
+vis.add_geometry(normal_line)
 opt = vis.get_render_option()
 opt.show_coordinate_frame = True
 vis.run()
