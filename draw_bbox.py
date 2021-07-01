@@ -182,6 +182,7 @@ depth=(1-depth)*10
 with open('desc.json','r') as f:
     info=json.load(f)
 
+
 bbox_infos=info['bbox_infos']
 camera_K=bbox_infos['camera']['K']
 translation=bbox_infos['camera']['pos']
