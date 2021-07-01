@@ -157,7 +157,7 @@ def get_bbox(center_pred,size_pred,rot_matrix,color=[1,0,0]):
     line_set.colors=o3d.utility.Vector3dVector(colors)
     return line_set
 
-def get_normal_line(normal_start,normal_end,color=[0,0,1]):
+def get_normal_line(normal_start,normal_end,color=[0,1,0]):
     verts = np.concatenate([normal_start, normal_end], axis=0)
     index1 = np.linspace(0, normal_start.shape[0] - 1, normal_start.shape[0]).astype(np.int)
     index2 = np.linspace(normal_start.shape[0], normal_start.shape[0] * 2 - 1, normal_start.shape[0]).astype(np.int)
@@ -175,8 +175,6 @@ depth=cv2.imread("depth.png",cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
 normal=cv2.imread("normal.png",cv2.IMREAD_ANYDEPTH|cv2.IMREAD_ANYCOLOR)
 normal=normal.astype(np.float)
 normal=normal[:,:,[2,1,0]]
-#normal=normal/(np.sqrt(normal[:,:,0]**2+normal[:,:,1]**2+normal[:,:,2]**2))[:,:,np.newaxis]
-#depth=depth[:,:,0]
 normal=(normal/255.0)*2-1
 depth=depth/255.0
 depth=(1-depth)*10
@@ -189,10 +187,11 @@ camera_K=bbox_infos['camera']['K']
 translation=bbox_infos['camera']['pos']
 Q=bbox_infos['camera']['rot']
 wrd2cam_matrix=quaternion_rotation_matrix(Q,translation)
+#normal=np.dot(wrd2cam_matrix[0:3,0:3],normal)
 cam2wrd_matrix=np.linalg.inv(wrd2cam_matrix)
 K=np.array(camera_K)
 object_infos=bbox_infos['object_infos']
-object=object_infos[2]
+object=object_infos[0]
 object_bbox=object["bbox"]
 bbox_center=object_bbox["center"]
 bbox_size=object_bbox["size"]
