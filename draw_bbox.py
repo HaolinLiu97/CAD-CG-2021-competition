@@ -174,8 +174,10 @@ color=cv2.imread("color.jpg",cv2.IMREAD_ANYDEPTH|cv2.IMREAD_ANYCOLOR)
 depth=cv2.imread("depth.png",cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
 normal=cv2.imread("normal.png",cv2.IMREAD_ANYDEPTH|cv2.IMREAD_ANYCOLOR)
 normal=normal.astype(np.float)
-normal=normal/(np.sqrt(normal[:,:,0]**2+normal[:,:,1]**2+normal[:,:,2]**2))[:,:,np.newaxis]
+normal=normal[:,:,[2,1,0]]
+#normal=normal/(np.sqrt(normal[:,:,0]**2+normal[:,:,1]**2+normal[:,:,2]**2))[:,:,np.newaxis]
 #depth=depth[:,:,0]
+normal=(normal/255.0)*2-1
 depth=depth/255.0
 depth=(1-depth)*10
 with open('desc.json','r') as f:
