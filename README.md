@@ -18,4 +18,4 @@ files to our email: cad_cg_3dscene_2021@aliyun.com. Maxmimum submission is once 
 ### Ranking list
 Team | 以此为归 | Inceptio | 万里蹀躞 |
 :-----:|:-----:|:-----:|:-----:|
-[rmse] | 0.336949 | 0.341257 | 0.349783 |
+rmse | 0.336949 | 0.341257 | 0.349783 |
