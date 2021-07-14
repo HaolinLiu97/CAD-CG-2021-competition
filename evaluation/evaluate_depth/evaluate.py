@@ -34,9 +34,9 @@ def report_score(score, out_p):
 
     dump_2_json(result,out_p)
 
-def compute_rmse(result_image,gt_image):
-    error=(result_image-gt_image)**2
-    mse=np.mean(error)
+def compute_rmse(result_image,gt_image,mask):
+    error=(result_image*mask-gt_image*mask)**2
+    mse=np.sum(error)/np.sum(mask)
     rmse=np.sqrt(mse)
     return rmse
 
@@ -49,9 +49,10 @@ def evaluate_rmse(submit_path,standard_path):
         print(gt_path)
         gt_image=cv2.imread(gt_path,cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
         gt_image=(1-gt_image/255.0)*10
+        valid_mask=(gt_image>0).astype(np.float)
         result_path=os.path.join(submit_path,image_name,"depth.exr")
         result_image=cv2.imread(result_path,cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
-        mmse=compute_rmse(result_image,gt_image)
+        mmse=compute_rmse(result_image,gt_image,valid_mask)
         total_count+=1
         total_mmse+=mmse
     mean_mmse=total_mmse/total_count
