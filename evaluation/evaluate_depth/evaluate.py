@@ -49,7 +49,7 @@ def evaluate_rmse(submit_path,standard_path):
         print(gt_path)
         gt_image=cv2.imread(gt_path,cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
         gt_image=(1-gt_image/255.0)*10
-        valid_mask=(gt_image>0).astype(np.float)
+        valid_mask=(gt_image>0 & gt_image<10).astype(np.float)
         result_path=os.path.join(submit_path,image_name,"depth.exr")
         result_image=cv2.imread(result_path,cv2.IMREAD_ANYCOLOR|cv2.IMREAD_ANYDEPTH)
         mmse=compute_rmse(result_image,gt_image,valid_mask)
