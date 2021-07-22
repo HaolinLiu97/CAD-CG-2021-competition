@@ -17,6 +17,6 @@ files to our email: cad_cg_3dscene_2021@aliyun.com. Maxmimum submission is once 
 
 ### Ranking list
 #### Depth estimation
-Team | CIE | 以此为归 | Inceptio | 万里蹀躞 | Friend |
-:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-rmse | 0.328116 | 0.336949 | 0.341257 | 0.349783 | 0.463344 |
+Team | CIE | 以此为归 | Inceptio | 万里蹀躞 | Friend  | 天气太热了 | 全都 |
+:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
+rmse | 0.285607 | 0.319174 | 0.326780 | 0.349783 | 0.365111 | 0.434401 | 3.134789 |
