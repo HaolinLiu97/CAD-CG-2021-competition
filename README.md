@@ -18,6 +18,6 @@ For the result on the test dataset. Please use only the rgb image as inputs to g
 
 ### Ranking list
 #### Depth estimation
-Team | CIE | 以此为归 | Inceptio | 万里蹀躞 | Friend  | 天气太热了 | 全都 |
+Team | CIE | friend | 以此为归 | Inceptio | 万里蹀躞 | 天气太热了 | 全都 |
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-rmse | 0.285607 | 0.319174 | 0.326780 | 0.349783 | 0.365111 | 0.434401 | 3.134789 |
+rmse | 0.285607 | 0.318904 | 0.319174 | 0.326780 | 0.349783 | 0.434401 | 3.134789 |
