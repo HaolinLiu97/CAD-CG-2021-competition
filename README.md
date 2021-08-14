@@ -20,7 +20,7 @@ For the result on the test dataset. Please use only the rgb image as inputs to g
 #### Depth estimation(val)
 Team | CIE | Friend | 以此为归 | Inceptio | 万里蹀躞 | 天气太热了 | 全都 | NH106A |
 :-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-rmse | 0.283844 | 0.305452 | 0.314974 | 0.326780 | 0.349783 | 0.434401 | 3.134789 | 69.331764 |
+rmse | 0.283844 | 0.305452 | 0.314974 | 0.326780 | 0.349783 | 0.434401 | 2.106284 | 69.331764 |
 
 #### Depth estimation(test)
 Team | CIE | Friend |
